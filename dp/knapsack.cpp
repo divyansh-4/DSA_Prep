@@ -5,25 +5,24 @@
 using namespace std;
 
 
-int knapSack(int w, vector<int> wt, vector<int> val, int v, int n){ 
-    if(n>=0){
-        if(w==0){
-            return v;
-        }
-        if(w<0){
+int knapSack(int w, vector<int> wt, vector<int> val, int n){ 
+        if(n==0){
+            if(wt[n]<=  w)return wt[n];
             return 0;
         }
-        if(w>0){
-            return max(knapSack(w-wt[n],wt,val,v+val[n],n-1),knapSack(w,wt,val,v,n-1));
+        int take=-1;
+        if(wt[n]<=w){
+            take=val[n]+knapSack(w-wt[n],wt,val,n-1);
         }
-    }
-    return v;
+        int notake=0+knapSack(w,wt,val,n-1);
+        return max(take,notake);    
+
 
 }
 
 int main(){
     vector<int> val={1,2,3};
-    vector<int> wt={4,5,6};
-    cout<<knapSack(3,wt,val,0,2);
+    vector<int> wt={4,5,1};
+    cout<<knapSack(4,wt,val,2);
 
 }

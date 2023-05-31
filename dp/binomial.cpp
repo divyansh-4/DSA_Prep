@@ -4,11 +4,15 @@
 #include <utility> 
 using namespace std;
 
-map<pair<int,int>, int> dp;
 
-int nCr(long long int n, long long int r){
-    if(dp.find({n,r}) != dp.end()){
-        return dp[{n,r}];
+int nCr(int n, int r){
+    vector<vector<int>> dp(n+1,vector<int>(r+1,-1));
+    return ncr(n,r,dp);
+}
+
+int ncr(int n, int r,vector<vector<int>> &dp){
+    if(dp[n][r]!= -1){
+        return dp[n][r];
     }
     if(n==r || r==0){
         return 1;
@@ -16,7 +20,7 @@ int nCr(long long int n, long long int r){
     if(n<r){
         return 0;
     }
-    return dp[{n,r}]=nCr(n-1,r-1)+nCr(n-1,r);
+    return dp[n][r]=ncr(n-1,r-1,dp)+ncr(n-1,r,dp)%1000000007;
 }
     int main(){
         int ans=nCr(15,3);

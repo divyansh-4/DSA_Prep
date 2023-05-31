@@ -4,20 +4,30 @@
 #include <utility> 
 using namespace std;
 
+map<pair<int,int>, int> dp;
 
-int knapSack(int w, vector<int> wt, vector<int> val, int n){ 
+int help(int w, vector<int> wt, vector<int> val, int n,vector<vector<int>> &dp){ 
+    if(dp[n][w]!=-1){
+        return dp[n][w];
+    }
+
         if(n==0){
-            if(wt[n]<=  w)return wt[n];
+            if(wt[0]<=  w)return val[0];
             return 0;
         }
         int take=-1;
         if(wt[n]<=w){
-            take=val[n]+knapSack(w-wt[n],wt,val,n-1);
+            take=val[n]+help(w-wt[n],wt,val,n-1,dp);
         }
-        int notake=0+knapSack(w,wt,val,n-1);
-        return max(take,notake);    
+        int notake=0+help(w,wt,val,n-1,dp);
+        return dp[n][w]=max(take,notake);    
 
 
+}
+
+int knapSack(int w, vector<int> wt, vector<int> val, int n){
+    vector<vector<int>> dp(n,vector<int> (w+1,-1));
+    return help(w,wt,val,n-1,dp);
 }
 
 int main(){

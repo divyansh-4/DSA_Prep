@@ -1,0 +1,5 @@
+Why are Java strings immutable?
+Ans=>what string immutability means here is that, yes you can
+    change the value that a string variable is holding, but what
+    that essentially does is changes where that variable is pointing.
+    This helps so that in case 2 strijng variables are have to store the same value, they can just point to the same point in the string pool, thus saving space.

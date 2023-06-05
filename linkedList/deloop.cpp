@@ -59,14 +59,19 @@ void insertAtTail(Node* &head, int val){
     }
     return false;
  }
- void deloop(Node* head){
-    Node* slow=head;
-    Node* fast=head;
-    while(fast->next!=NULL || fast->next->next!=NULL){
-        if(slow==fast)break;
-        slow=slow->next;
-        fast=fast->next->next;
-    }
+ int deloop(Node* head){
+       if(head==NULL || head->next==NULL)
+       {
+           return 0;
+       }
+       Node* slow=head;
+       Node* fast=head;
+       while(fast!=NULL && fast->next!=NULL)
+       {
+           slow=slow->next;
+           fast=fast->next->next;
+           if(slow==fast) break;
+       }
     Node* temp=head;
     while(temp->next!=slow->next){
         temp=temp->next;

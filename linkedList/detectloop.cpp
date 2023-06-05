@@ -50,15 +50,19 @@ void insertAtTail(Node* &head, int val){
  }
 
  bool detect(Node* &head){
-    if(!head)return false
-    Node* slow=head;
-    Node* fast=head;
-    while(fast!=NULL || fast->next!=NULL){
-        if(slow==fast)return true;
-        slow=slow->next;
-        fast=fast->next->next;
-    }
-    return false;
+       if(head==NULL || head->next==NULL)
+       {
+           return false;
+       }
+       Node* slow=head;
+       Node* fast=head;
+       while(fast!=NULL && fast->next!=NULL)
+       {
+           slow=slow->next;
+           fast=fast->next->next;
+           if(slow==fast) return true;
+       }
+       return false;
  }
 
  int main(){

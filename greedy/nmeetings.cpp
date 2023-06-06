@@ -13,6 +13,9 @@ int maxmeetings(vector<int> start, vector<int> end, int n){
         meets.push_back({end[i],start[i]});
         // sort(meets.begin(),meets.end());
     }
+    // for(int i=0;i<n;i++){
+    //     cout<<meets[i].first<<":"<<meets[i].second<<endl;
+    // }
     sort(meets.begin(),meets.end());
     // reverse(meets.begin(),meets.end());
     // for(int i=0;i<n;i++){

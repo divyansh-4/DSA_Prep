@@ -58,7 +58,7 @@ Node* inorderSuc(Node* root){
 }
 
 Node*delet(Node* root, int val){
-    if(key<root->data){
+    if(val<root->data){
         root->left=delet(root->left,val);
     }
     else if(key>root->data){

@@ -21,7 +21,7 @@ void func(Node* head){
         prev=temp;
         temp=temp->next;
     }
-    Node* hn=head-;
+    Node* hn=head;
     head=temp;
     temp->next=hn;
     prev->next=NULL;

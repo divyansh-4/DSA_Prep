@@ -29,7 +29,7 @@ void recursivePostOrder(Node* root){
 
 void iterativePosrOrder(Node* root){
     if(root==NULL)return;
-    stac<Node*> stac;
+    stack<Node*> stac;
     stac.push(root);
     while(!(stac.empty())){
         
